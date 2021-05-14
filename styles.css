@@ -78,6 +78,7 @@ body{
 }
 .expense_btns>button {
     padding:10px;
+    cursor:pointer;
 }
 
 .trackerOutput_box{
