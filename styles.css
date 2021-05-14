@@ -70,7 +70,13 @@ body{
     padding:10px;
 }
 
-.trackerInput_box > button{
+.expense_btns {
+    margin:4px;
+    display:flex;
+    width:20vw;
+    justify-content:space-evenly;
+}
+.expense_btns>button {
     padding:10px;
 }
 

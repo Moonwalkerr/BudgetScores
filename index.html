@@ -20,7 +20,10 @@
                     alt="">
                 <input type="text" id="item_name" placeholder="Enter Item Name">
                 <input type="text" id="amount_spent" placeholder="Enter Amount spent">
-                <button>Add Expense</button>
+                <div class="expense_btns">
+                    <button id="add_btn">Add Expense</button>
+                    <button id="reset_btn">Reset</button>
+                </div>
             </div>
         </div>
         <div class="trackerOutput_container">
@@ -35,10 +38,11 @@
 
             </div>
             <div class="totalExpenses">
-                <h2>Total Expenses : <span id="expenses-total">100 Rs</span> </h2>
+                <h2>Total Expenses : <span id="total_expenses">0</span> </h2>
             </div>
         </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 
 </html>
