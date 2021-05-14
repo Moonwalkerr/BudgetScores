@@ -11,11 +11,32 @@
 <body>
 
     <div class="mainContainer">
-        <div class="trackerInput">
-
+        <div class="trackerInput_container">
+            <div class="trackerInput_navbar">
+                <h2>Enter your expense here</h2>
+            </div>
+            <div class="trackerInput_box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNw22RpwrqNhMQyj4xMO8nHqd9E2nCqGZjLcocuR4kzeqTGZFODvp090wE2sm3NFT3F1k&usqp=CAU"
+                    alt="">
+                <input type="text" id="item_name" placeholder="Enter Item Name">
+                <input type="text" id="amount_spent" placeholder="Enter Amount spent">
+                <button>Add Expense</button>
+            </div>
         </div>
-        <div class="trackerOutput">
+        <div class="trackerOutput_container">
+            <div class="trackerOutput_navbar">
+                <h2>Track Your Expenses here </h2>
+            </div>
+            <div class="trackerOutput_box">
+                <ul>
+                    <!-- <li>Exp 1 : <span>100</span> </li> -->
+                </ul>
+                <!-- <h2>No Expenses yet !</h2> -->
 
+            </div>
+            <div class="totalExpenses">
+                <h2>Total Expenses : <span id="expenses-total">100 Rs</span> </h2>
+            </div>
         </div>
     </div>
 </body>
