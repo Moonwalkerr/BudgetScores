@@ -107,13 +107,23 @@ body{
     bottom:0%;
     text-align:center;
 }
+.list-amount::before,
+#total_expenses::before {
+    content: "₹ ";
+}
 
-#expenses_total{
+.list-group-item{
+    display:flex;
+    justify-content:space-between;
+}
+.list-amount {
+    font-family: cursive;
+}
+
+#total_expenses{
     font-family: cursive;
 }
 
 ::-webkit-scrollbar{
     display:none;
 }
-
-
