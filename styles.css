@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:darkgray;
+}
+
+
+.mainContainer{
+    height:85vh;
+    width:80vw;
+    background-color:lightgray;
+    box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.18);
+    transition: box-shadow 0.4s;
+}
+
+.mainContainer:hover{
+    box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.26);
+}
