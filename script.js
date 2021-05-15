@@ -10,7 +10,16 @@ const firebaseConfig = {
 // Initializing Firebase
 firebase.initializeApp(firebaseConfig);
 
-const item_name_input = document.querySelector("#item_name");
+const auth = firebase.auth();
+
+function signUp() {
+    var email = document.getElementById("email");
+    var paswd = document.getElementById("paswd");
+    auth.createUserwithEmailAndPassword(email.value, paswd.value);
+    promise.catch(err => alert(err.message));
+
+    alert("User Logged In");
+}const item_name_input = document.querySelector("#item_name");
 const amount_spent_input = document.querySelector("#amount_spent");
 const addButton = document.querySelector("#add_btn");
 const total_expenses = document.querySelector("#total_expenses");
@@ -27,7 +36,10 @@ addButton.addEventListener("click", () => {
     totalExpenses += amountSpent;
     total_expenses.innerHTML = totalExpenses;
 
-    
+    // const databaseRef = firebase.firestore();
+
+    // databaseRef.collection("")
+
     expenseArray.push({
         item: item_name_input.value,
         amountSpent: amountSpent,
