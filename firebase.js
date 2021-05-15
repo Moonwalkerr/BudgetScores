@@ -1,3 +1,7 @@
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
 // firebase Key
 const firebaseConfig = {
     apiKey: "AIzaSyBRfd244wcEVP9vKsW-zRXrR_99s2Hv5oM",
@@ -11,6 +15,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
+const fireStore = firebase.firestore();
 
 function signUp() {
     var email = document.getElementById("email");
@@ -20,3 +25,6 @@ function signUp() {
 
     alert("User Logged In");
 }
+
+
+export {auth,fireStore,signUp};

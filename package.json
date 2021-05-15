@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Moonwalkerr/BudgetScores/issues"
   },
-  "homepage": "https://github.com/Moonwalkerr/BudgetScores#readme"
+  "homepage": "https://github.com/Moonwalkerr/BudgetScores#readme",
+  "dependencies": {
+    "firebase": "^8.6.1"
+  }
 }
