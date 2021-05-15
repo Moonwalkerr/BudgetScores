@@ -26,6 +26,8 @@ addButton.addEventListener("click", () => {
     let amountSpent = parseInt(amount_spent_input.value, 10);
     totalExpenses += amountSpent;
     total_expenses.innerHTML = totalExpenses;
+
+    
     expenseArray.push({
         item: item_name_input.value,
         amountSpent: amountSpent,
