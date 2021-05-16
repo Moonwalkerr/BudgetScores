@@ -13,6 +13,33 @@ body{
 }
 
 
+body > form {
+    display:flex;
+    border:1px solid black;
+    padding:10px;
+    background-color:antiquewhite;
+    box-shadow:2px 3px 5px 4px rgba(0,0,0,0.2);
+    flex-flow:column nowrap;
+}
+
+form > input, button{
+    margin:0.5rem auto;
+    font-size:18px;
+    padding:12px;
+    width:30vw;
+}
+
+form > button {
+    font-size:14px;
+    width:20vw;
+    color:white;
+    background-color:#333;
+    cursor:pointer;
+}
+
+form > button:hover{
+    background-color:gray;
+}
 .mainContainer{
     display:flex;
     flex-wrap: nowrap;
