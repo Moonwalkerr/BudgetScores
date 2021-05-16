@@ -18,6 +18,16 @@ const resetBtn = document.querySelector("#reset_btn");
 const ul = document.querySelector(".expense_list");
 const logout = document.querySelector("#logout");
 
+const auth = firebase.auth();
+// Logout event listener
+logout.addEventListener("click", () => {
+  auth.signOut();
+  window.location = "login.html";
+});
+
+// Now comes firestore part
+const db = firebase.firestore();
+
 const expenseArray = [];
 
 let totalExpenses = 0;
@@ -60,11 +70,4 @@ resetBtn.addEventListener("click", () => {
   total_expenses.innerHTML = "0";
   item_name_input.value = "";
   amount_spent_input.value = "";
-});
-
-const auth = firebase.auth();
-// Logout event listener
-logout.addEventListener("click", () => {
-  auth.signOut();
-  window.location = "login.html";
 });
