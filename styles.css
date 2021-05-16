@@ -13,6 +13,33 @@ body{
 }
 
 
+body > form {
+    display:flex;
+    border:1px solid black;
+    padding:10px;
+    background-color:antiquewhite;
+    box-shadow:2px 3px 5px 4px rgba(0,0,0,0.2);
+    flex-flow:column nowrap;
+}
+
+form > input, button{
+    margin:0.5rem auto;
+    font-size:18px;
+    padding:12px;
+    width:30vw;
+}
+
+form > button {
+    font-size:14px;
+    width:20vw;
+    color:white;
+    background-color:#333;
+    cursor:pointer;
+}
+
+form > button:hover{
+    background-color:gray;
+}
 .mainContainer{
     display:flex;
     flex-wrap: nowrap;
@@ -32,19 +59,33 @@ body{
 
 .trackerInput_container{
     flex:0.50;
-    position:sticky;
+    display:flex;
     border-right: 1px solid #333;
-    /* background-color:green; */
-    /* padding:10px; */
+    flex-flow:column nowrap;
+    /* align-items:center;
+    justify-content:center; */
 }
 
 .trackerInput_navbar, .trackerOutput_navbar{
     background-color:sandybrown;
-    padding:20px;
+    padding:10px;
     text-align:center;
-    font-size:1.25rem;
+    font-size:1.2rem;
+    width:100%;
+    display:flex;
+    flex-flow:row wrap;
+    align-items:center;
+    min-height:10vh;
+    justify-content:space-evenly;
 }
 
+
+
+.trackerInput_navbar > h2 > span > button {
+    width:8vw;
+    margin-left:20px;
+    border-radius:12px;
+}
 
 .trackerOutput_container{
     flex:0.50;
@@ -55,12 +96,10 @@ body{
 
 
 .trackerInput_box {
-    height:100%;
-    width:100%;
+    margin:auto;        
     display:flex;
     flex-flow:column nowrap;
     align-items:center;
-    justify-content:center;
 }
 
 .trackerInput_box > input{
