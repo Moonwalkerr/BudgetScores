@@ -1,7 +1,10 @@
 // fetching user
 const auth = firebase.auth();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
 let user = "";
 
+const expenseArray = [];
 (async function () {
   await auth.onAuthStateChanged((firebaseUser) => {
     // console.log(firebaseUser);
@@ -10,8 +13,20 @@ let user = "";
     }
     if (firebaseUser.uid) {
       user = firebaseUser.uid;
+
+      db.collection(user)
+        .orderBy("timestamp", "desc")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            console.log(doc.data());
+            expenseArray.push({
+              item: doc.data().item,
+              amountSpent: doc.data().amountSpent,
+            });
+          });
+        });
     }
-    console.log(user);
   });
 })();
 const item_name_input = document.querySelector("#item_name");
@@ -31,8 +46,6 @@ logout.addEventListener("click", () => {
 // Now comes firestore part
 const db = firebase.firestore();
 
-const expenseArray = [];
-
 let totalExpenses = 0;
 
 const uni = user;
@@ -44,13 +57,17 @@ addButton.addEventListener("click", () => {
   db.collection(user).add({
     item: item_name_input.value,
     amountSpent: amountSpent,
+    timestamp: timestamp,
   });
 
+  db.collection(user)
+    .get()
+    .then((snapshot) => {
+      console.log(snapshot);
+      snapshot.map((doc) => console.log(doc));
+    });
+
   total_expenses.innerHTML = totalExpenses;
-  expenseArray.push({
-    item: item_name_input.value,
-    amountSpent: amountSpent,
-  });
 
   item_name_input.value = "";
   amount_spent_input.value = "";
