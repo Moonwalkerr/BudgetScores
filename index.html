@@ -13,7 +13,7 @@
     <div class="mainContainer">
         <div class="trackerInput_container">
             <div class="trackerInput_navbar">
-                <h2>Enter your expense here <span><button>Logout</button></span> </h2>
+                <h2>Enter your expense here <span><button id="logout">Logout</button></span> </h2>
             </div>
             <div class="trackerInput_box">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNw22RpwrqNhMQyj4xMO8nHqd9E2nCqGZjLcocuR4kzeqTGZFODvp090wE2sm3NFT3F1k&usqp=CAU"
@@ -42,6 +42,21 @@
             </div>
         </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBRfd244wcEVP9vKsW-zRXrR_99s2Hv5oM",
+            authDomain: "budgetscores-d10c5.firebaseapp.com",
+            projectId: "budgetscores-d10c5",
+            storageBucket: "budgetscores-d10c5.appspot.com",
+            messagingSenderId: "575384564584",
+            appId: "1:575384564584:web:c4153e6dacb9a5a48c1cdd",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="./script.js"></script>
 </body>
 
