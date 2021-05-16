@@ -1,6 +1,5 @@
 const auth = firebase.auth();
 auth.onAuthStateChanged((firebaseUser) => {
-  // If firebaseUser -> courses.html
   if (firebaseUser) {
     window.location = "index.html";
   }
