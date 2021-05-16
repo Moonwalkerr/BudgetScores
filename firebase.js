@@ -1,4 +1,10 @@
 const auth = firebase.auth();
+auth.onAuthStateChanged((firebaseUser) => {
+  // If firebaseUser -> courses.html
+  if (firebaseUser) {
+    window.location = "index.html";
+  }
+});
 const input_email = document.getElementById("email");
 const input_paswd = document.getElementById("paswd");
 const submit_btn = document.getElementById("submit");
