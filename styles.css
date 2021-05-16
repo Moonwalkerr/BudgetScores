@@ -77,6 +77,7 @@ form > button:hover{
     align-items:center;
     min-height:10vh;
     justify-content:space-evenly;
+    border-left:1px solid #333;
 }
 
 
@@ -87,14 +88,19 @@ form > button:hover{
     border-radius:12px;
 }
 
-.trackerOutput_container{
-    flex:0.50;
+.trackerOutput_container {
+    flex: 0.50;
+    display: flex;
+    border-right: 1px solid #333;
+    flex-flow: column nowrap;
     position: relative;
     /* background-color:red; */
     /* padding:10px; */
 }
 
-
+#logout{
+    cursor:pointer;
+}
 .trackerInput_box {
     margin:auto;        
     display:flex;
