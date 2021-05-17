@@ -4,6 +4,8 @@ A Expense / Budget tracker web application. Helps in keeping track of your day t
 - HTML5.
 - CSS3.
 - Vanilla Javascript.
+- Firebasse (Auth & Firestore)
+- No frameworks used
 
 ## Features :
 - Add your expenditure according to item name and amount spent.
