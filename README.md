@@ -1,5 +1,6 @@
 ## BudgetScores : 
-A Expense / Budget tracker web application. Helps in keeping track of your day to day budgets
+- A Expense / Budget tracker web application. Helps in keeping track of your day to day budgets.
+- A full stack web application with all CRUD features enabled.
 ## Tech Stacks:
 - HTML5.
 - CSS3.

@@ -56,13 +56,21 @@ function generateTotalExpenses() {
 }
 
 // This function updates total expenses document value on firebase
-function updateTotalExpenses(expense) {
-  // console.log(totalExpenses, expense);
-  db.collection(user)
-    .doc("TotalExpenses")
-    .set({
-      totalExpenses: totalExpenses + expense,
-    });
+function updateTotalExpenses(expense, del) {
+  if (del) {
+    db.collection(user)
+      .doc("TotalExpenses")
+      .set({
+        totalExpenses: totalExpenses - expense,
+      });
+  } else {
+    db.collection(user)
+      .doc("TotalExpenses")
+      .set({
+        totalExpenses: totalExpenses + expense,
+      });
+  }
+
   db.collection(user)
     .doc("TotalExpenses")
     .get()
@@ -76,14 +84,33 @@ function updateTotalExpenses(expense) {
     });
 }
 
+// Function to delete a particular doc item from firestore
+function deleteDoc(id, amount) {
+  updateTotalExpenses(amount, true);
+  db.collection(user)
+    .doc("Expenses")
+    .collection("ExpenseArray")
+    .doc(id)
+    .delete()
+    .then(() => {
+      alert("Successfully deleted the item");
+      generateLists();
+    })
+    .catch((err) => alert(err.message));
+}
+
 // function that takes the snapshot's argument to generate list items of unordered list
 function generateListItem(snapshot_doc) {
-  // console.log(snapshot_doc.data());
+  // console.log();
   const list_item = document.createTextNode(snapshot_doc.data().item);
   const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
   const span = document.createElement("span");
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("deleteBtn");
+  deleteBtn.addEventListener("click", () =>
+    deleteDoc(snapshot_doc.id, snapshot_doc.data().amountSpent)
+  );
+
   const delete_node = document.createTextNode("❌");
   deleteBtn.appendChild(delete_node);
   span.classList.add("list-amount");
