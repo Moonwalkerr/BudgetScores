@@ -75,7 +75,6 @@ function updateTotalExpenses(expense, del) {
     .get()
     .then((doc) => {
       if (doc.exists) {
-        console.log(doc.data());
         totalExpenses = doc.data().totalExpenses;
         // re rendering the respective element again
         total_expenses.innerHTML = totalExpenses;
