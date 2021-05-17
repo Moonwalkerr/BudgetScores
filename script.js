@@ -23,10 +23,20 @@ auth.onAuthStateChanged((firebaseUser) => {
     ul.innerHTML = "";
     db.collection(user)
       .doc("Expenses")
+      .collection("ExpenseArray")
       .orderBy("timestamp", "desc")
       .get()
       .then((snapshot) => {
         snapshot.forEach((doc) => generateList(doc));
+      });
+
+    db.collection(user)
+      .doc("TotalExpenses")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          console.log("Total Expenses:", doc.data());
+        }
       });
   }
 });
@@ -51,6 +61,23 @@ function generateList(snapshot_doc) {
   ul.appendChild(li);
 }
 
+function updateTotalExpenses(expense) {
+  db.collection(user)
+    .doc("TotalExpenses")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log("Total Expenses:", doc.data());
+      }
+    });
+
+  db.collection(user)
+    .doc("TotalExpenses")
+    .set({
+      totalExpenses: totalExpenses + expense,
+    });
+}
+
 // Logout event listener
 logout.addEventListener("click", () => {
   auth.signOut();
@@ -62,13 +89,12 @@ const db = firebase.firestore();
 
 let totalExpenses = 0;
 
-const uni = user;
 // Adding Expense Button
 addButton.addEventListener("click", () => {
   let amountSpent = parseInt(amount_spent_input.value, 10);
   totalExpenses += amountSpent;
 
-  db.collection(user).doc("Expenses").add({
+  db.collection(user).doc("Expenses").collection("ExpenseArray").add({
     item: item_name_input.value,
     amountSpent: amountSpent,
     timestamp: timestamp,
@@ -77,6 +103,7 @@ addButton.addEventListener("click", () => {
   ul.innerHTML = "";
   db.collection(user)
     .doc("Expenses")
+    .collection("ExpenseArray")
     .orderBy("timestamp", "desc")
     .get()
     .then((snapshot) => {
@@ -85,6 +112,9 @@ addButton.addEventListener("click", () => {
 
   total_expenses.innerHTML = totalExpenses;
 
+  db.collection(user).doc("TotalExpenses").set({
+    totalExpenses: totalExpenses,
+  });
   item_name_input.value = "";
   amount_spent_input.value = "";
 });
