@@ -5,30 +5,29 @@ const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 let user = "";
 
 const expenseArray = [];
-(async function () {
-  await auth.onAuthStateChanged((firebaseUser) => {
-    // console.log(firebaseUser);
-    if (!firebaseUser) {
-      window.location("./login.html");
-    }
-    if (firebaseUser.uid) {
-      user = firebaseUser.uid;
+auth.onAuthStateChanged((firebaseUser) => {
+  console.log(firebaseUser);
+  if (!firebaseUser) {
+    window.location = "./login.html";
+  }
+  if (firebaseUser.uid) {
+    user = firebaseUser.uid;
 
-      db.collection(user)
-        .orderBy("timestamp", "desc")
-        .get()
-        .then((snapshot) => {
-          snapshot.forEach((doc) => {
-            console.log(doc.data());
-            expenseArray.push({
-              item: doc.data().item,
-              amountSpent: doc.data().amountSpent,
-            });
-          });
-        });
-    }
-  });
-})();
+    // db.collection(user)
+    //   .orderBy("timestamp", "desc")
+    //   .get()
+    //   .then((snapshot) => {
+    //     snapshot.forEach((doc) => {
+    //       console.log(doc.data());
+    //       expenseArray.push({
+    //         item: doc.data().item,
+    //         amountSpent: doc.data().amountSpent,
+    //       });
+    //     });
+    //   });
+  }
+});
+
 const item_name_input = document.querySelector("#item_name");
 const amount_spent_input = document.querySelector("#amount_spent");
 const addButton = document.querySelector("#add_btn");
