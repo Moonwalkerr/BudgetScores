@@ -22,6 +22,7 @@ auth.onAuthStateChanged((firebaseUser) => {
     user = firebaseUser.uid;
     ul.innerHTML = "";
     db.collection(user)
+      .doc("Expenses")
       .orderBy("timestamp", "desc")
       .get()
       .then((snapshot) => {
@@ -67,7 +68,7 @@ addButton.addEventListener("click", () => {
   let amountSpent = parseInt(amount_spent_input.value, 10);
   totalExpenses += amountSpent;
 
-  db.collection(user).add({
+  db.collection(user).doc("Expenses").add({
     item: item_name_input.value,
     amountSpent: amountSpent,
     timestamp: timestamp,
@@ -75,6 +76,7 @@ addButton.addEventListener("click", () => {
 
   ul.innerHTML = "";
   db.collection(user)
+    .doc("Expenses")
     .orderBy("timestamp", "desc")
     .get()
     .then((snapshot) => {
@@ -93,5 +95,9 @@ resetBtn.addEventListener("click", () => {
   total_expenses.innerHTML = "0";
   item_name_input.value = "";
   amount_spent_input.value = "";
-  db.collection(user).delete();
+  db.collection(user)
+    .get()
+    .then((response) => {
+      response.forEach((doc) => doc.ref.delete());
+    });
 });
