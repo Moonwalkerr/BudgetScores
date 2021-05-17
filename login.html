@@ -4,33 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Budget Scores | Login</title>
 </head>
 
 <body>
-    <form>
-        <input type="email" name="" id="email">
-        <input type="password" name="" id="paswd">
-        <button id="signIn">Sign In</button>
-        <button id="login">Log In</button>
+    <form onsubmit="signUp()">
+        <input type="email" id="email">
+        <input type="password" id="paswd">
+        <button type="submit">Login</button>
     </form>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyBRfd244wcEVP9vKsW-zRXrR_99s2Hv5oM",
-            authDomain: "budgetscores-d10c5.firebaseapp.com",
-            projectId: "budgetscores-d10c5",
-            storageBucket: "budgetscores-d10c5.appspot.com",
-            messagingSenderId: "575384564584",
-            appId: "1:575384564584:web:c4153e6dacb9a5a48c1cdd",
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
-    <script src="./firebaseAuth.js"></script>
+    <script src="./firebase.js"></script>
+
 </body>
 
 </html>

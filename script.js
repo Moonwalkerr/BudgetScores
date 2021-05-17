@@ -1,10 +1,3 @@
-// fetching user
-const auth = firebase.auth();
-const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-let user = "";
-var totalExpenses = 0;
-
-// Declaring required variables by fetching them from dom using querySelector
 const item_name_input = document.querySelector("#item_name");
 const amount_spent_input = document.querySelector("#amount_spent");
 const addButton = document.querySelector("#add_btn");
@@ -39,69 +32,25 @@ function generateLists() {
   generateTotalExpenses();
 }
 
-// This method fetches total expenses from firebase, and renders total expenses element in our DOM
-function generateTotalExpenses() {
-  db.collection(user)
-    .doc("TotalExpenses")
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        console.log(doc.data());
-        totalExpenses = doc.data().totalExpenses;
+// Adding Expense Button
+addButton.addEventListener("click", () => {
+    let amountSpent = parseInt(amount_spent_input.value, 10);
+    totalExpenses += amountSpent;
+    total_expenses.innerHTML = totalExpenses;
 
-        // rendering the respective element
-        total_expenses.innerHTML = totalExpenses;
-      }
-    });
-}
+    // const databaseRef = firebase.firestore();
 
-// This function updates total expenses document value on firebase
-function updateTotalExpenses(expense, del) {
-  if (del) {
-    db.collection(user)
-      .doc("TotalExpenses")
-      .set({
-        totalExpenses: totalExpenses - expense,
-      });
-  } else {
-    db.collection(user)
-      .doc("TotalExpenses")
-      .set({
-        totalExpenses: totalExpenses + expense,
-      });
-  }
+    // databaseRef.collection("")
 
-  db.collection(user)
-    .doc("TotalExpenses")
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        console.log(doc.data());
-        totalExpenses = doc.data().totalExpenses;
-        // re rendering the respective element again
-        total_expenses.innerHTML = totalExpenses;
-      }
-    });
-}
-
-// Function to delete a particular doc item from firestore
-function deleteDoc(id, amount) {
-  updateTotalExpenses(amount, true);
-  db.collection(user)
-    .doc("Expenses")
-    .collection("ExpenseArray")
-    .doc(id)
-    .delete()
-    .then(() => {
-      alert("Successfully deleted the item");
-      generateLists();
+    expenseArray.push({
+        item: item_name_input.value,
+        amountSpent: amountSpent,
     })
     .catch((err) => alert(err.message));
 }
 
 // function that takes the snapshot's argument to generate list items of unordered list
 function generateListItem(snapshot_doc) {
-  // console.log();
   const list_item = document.createTextNode(snapshot_doc.data().item);
   const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
   const span = document.createElement("span");
