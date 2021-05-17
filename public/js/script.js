@@ -86,17 +86,20 @@ function updateTotalExpenses(expense, del) {
 
 // Function to delete a particular doc item from firestore
 function deleteDoc(id, amount) {
-  updateTotalExpenses(amount, true);
-  db.collection(user)
-    .doc("Expenses")
-    .collection("ExpenseArray")
-    .doc(id)
-    .delete()
-    .then(() => {
-      alert("Successfully deleted the item");
-      generateLists();
-    })
-    .catch((err) => alert(err.message));
+  let userConfirmation = confirm("Are you sure you want to delete this item?");
+  if (userConfirmation) {
+    updateTotalExpenses(amount, true);
+    db.collection(user)
+      .doc("Expenses")
+      .collection("ExpenseArray")
+      .doc(id)
+      .delete()
+      .then(() => {
+        alert("Successfully deleted the item");
+        generateLists();
+      })
+      .catch((err) => alert(err.message));
+  }
 }
 
 // function that takes the snapshot's argument to generate list items of unordered list
