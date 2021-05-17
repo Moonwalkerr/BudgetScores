@@ -47,7 +47,6 @@ function generateTotalExpenses() {
     .get()
     .then((doc) => {
       if (doc.exists) {
-        console.log(doc.data());
         totalExpenses = doc.data().totalExpenses;
 
         // rendering the respective element
