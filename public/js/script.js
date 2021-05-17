@@ -16,7 +16,7 @@ const logout = document.querySelector("#logout");
 auth.onAuthStateChanged((firebaseUser) => {
   // console.log(firebaseUser);
   if (!firebaseUser) {
-    window.location = "../login/";
+    window.location = "../../";
   }
   if (firebaseUser.uid) {
     user = firebaseUser.uid;
