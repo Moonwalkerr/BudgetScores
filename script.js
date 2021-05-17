@@ -2,6 +2,7 @@
 const auth = firebase.auth();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 let user = "";
+var totalExpenses = 0;
 
 // Declaring required variables by fetching them from dom using querySelector
 const item_name_input = document.querySelector("#item_name");
@@ -29,20 +30,21 @@ auth.onAuthStateChanged((firebaseUser) => {
       .then((snapshot) => {
         snapshot.forEach((doc) => generateList(doc));
       });
-
     db.collection(user)
       .doc("TotalExpenses")
       .get()
       .then((doc) => {
         if (doc.exists) {
-          console.log("Total Expenses:", doc.data());
+          console.log(doc.data());
+          totalExpenses = doc.data().totalExpenses;
+          total_expenses.innerHTML = totalExpenses;
         }
       });
   }
 });
 // function that takes the snapshot's argument to generate list items of unordered list
 function generateList(snapshot_doc) {
-  console.log(snapshot_doc.data());
+  // console.log(snapshot_doc.data());
   const list_item = document.createTextNode(snapshot_doc.data().item);
   const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
   const span = document.createElement("span");
@@ -62,19 +64,21 @@ function generateList(snapshot_doc) {
 }
 
 function updateTotalExpenses(expense) {
+  // console.log(totalExpenses, expense);
+  db.collection(user)
+    .doc("TotalExpenses")
+    .set({
+      totalExpenses: totalExpenses + expense,
+    });
   db.collection(user)
     .doc("TotalExpenses")
     .get()
     .then((doc) => {
       if (doc.exists) {
-        console.log("Total Expenses:", doc.data());
+        console.log(doc.data());
+        totalExpenses = doc.data().totalExpenses;
+        total_expenses.innerHTML = totalExpenses;
       }
-    });
-
-  db.collection(user)
-    .doc("TotalExpenses")
-    .set({
-      totalExpenses: totalExpenses + expense,
     });
 }
 
@@ -87,12 +91,12 @@ logout.addEventListener("click", () => {
 // Now comes firestore part
 const db = firebase.firestore();
 
-let totalExpenses = 0;
-
 // Adding Expense Button
 addButton.addEventListener("click", () => {
   let amountSpent = parseInt(amount_spent_input.value, 10);
-  totalExpenses += amountSpent;
+
+  total_expenses.innerHTML = "";
+  updateTotalExpenses(amountSpent);
 
   db.collection(user).doc("Expenses").collection("ExpenseArray").add({
     item: item_name_input.value,
@@ -110,11 +114,6 @@ addButton.addEventListener("click", () => {
       snapshot.forEach((doc) => generateList(doc));
     });
 
-  total_expenses.innerHTML = totalExpenses;
-
-  db.collection(user).doc("TotalExpenses").set({
-    totalExpenses: totalExpenses,
-  });
   item_name_input.value = "";
   amount_spent_input.value = "";
 });
@@ -126,8 +125,14 @@ resetBtn.addEventListener("click", () => {
   item_name_input.value = "";
   amount_spent_input.value = "";
   db.collection(user)
+    .doc("Expenses")
+    .collection("ExpenseArray")
     .get()
     .then((response) => {
       response.forEach((doc) => doc.ref.delete());
     });
+
+  db.collection(user).doc("TotalExpenses").set({
+    totalExpenses: 0,
+  });
 });
