@@ -1,0 +1,22 @@
+{
+  "name": "budgetscores",
+  "version": "1.0.0",
+  "description": "Expense tracker app",
+  "main": "firebase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moonwalkerr/BudgetScores.git"
+  },
+  "author": "Abhishek Mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moonwalkerr/BudgetScores/issues"
+  },
+  "homepage": "https://github.com/Moonwalkerr/BudgetScores#readme",
+  "dependencies": {
+    "firebase": "^8.6.1"
+  }
+}
