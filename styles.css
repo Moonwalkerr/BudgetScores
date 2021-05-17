@@ -40,7 +40,7 @@ form > button {
 form > button:hover{
     background-color:gray;
 }
-.mainContainer{
+/* .mainContainer{
     display:flex;
     flex-wrap: nowrap;
     height:85vh;
@@ -50,66 +50,87 @@ form > button:hover{
     background-color:lightgray;
     box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.18);
     transition: box-shadow 0.4s;
-}
-
+} */
+/* 
 .mainContainer:hover{
     box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.26);
-}
+} */
 
 
 .trackerInput_container{
     flex:0.50;
+    height:100vh;
     display:flex;
     border-right: 1px solid #333;
     flex-flow:column nowrap;
-    /* align-items:center;
-    justify-content:center; */
+    position:sticky;
+}
+.trackerOutput_container {
+    flex: 0.50;
+    display: flex;
+    height:100vh;
+    flex-flow: column nowrap;
+    position: relative;
 }
 
+.trackerOutput_box {
+    display: flex;
+    padding: 30px;
+    flex-flow: column nowrap;
+    overflow: scroll;
+}
+
+.trackerInput_box {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
 .trackerInput_navbar, .trackerOutput_navbar{
     background-color:sandybrown;
     padding:10px;
     text-align:center;
     font-size:1.2rem;
-    width:100%;
     display:flex;
     flex-flow:row wrap;
     align-items:center;
     min-height:10vh;
     justify-content:space-evenly;
-    border-left:1px solid #333;
+    position:sticky;
+    box-shadow:2px 2px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
+.deleteBtn{
+    max-width:3vw;
+    font-size:12px;
+    margin-left:10px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    /* height:5vh; */
+}
 
-
+#logout {
+    cursor: pointer;
+    border: none;
+}
 .trackerInput_navbar > h2 > span > button {
     width:8vw;
     margin-left:20px;
     border-radius:12px;
 }
 
-.trackerOutput_container {
-    flex: 0.50;
-    display: flex;
-    border-right: 1px solid #333;
-    flex-flow: column nowrap;
-    position: relative;
-    /* background-color:red; */
-    /* padding:10px; */
-}
 
-#logout{
-    cursor:pointer;
-}
-.trackerInput_box {
-    margin:auto;        
-    display:flex;
-    flex-flow:column nowrap;
-    align-items:center;
+
+img{
+    height:45vh;
+    width:30vw;
+    margin-bottom:0.5rem;
 }
 
 .trackerInput_box > input{
-    width:20vw;
+    width:25vw;
     margin: 10px auto;
     font-size:18px;
     padding:10px;
@@ -118,19 +139,16 @@ form > button:hover{
 .expense_btns {
     margin:4px;
     display:flex;
-    width:20vw;
+    width:25vw;
     justify-content:space-evenly;
 }
 .expense_btns>button {
-    padding:10px;
     cursor:pointer;
-}
-
-.trackerOutput_box{
-    display:flex;
-    padding: 30px;
-    flex-flow: column nowrap;
-    overflow:scroll;
+    width:8vw;
+    font-size:0.88rem;
+    font-weight:600;
+    border-radius: 12px;
+    border:none;
 }
 
 .trackerOutput_box > h2{
@@ -152,6 +170,7 @@ form > button:hover{
     color:white;
     bottom:0%;
     text-align:center;
+    box-shadow:2px -2px 5px 4px rgba(0, 0, 0, 0.2);
 }
 .list-amount::before,
 #total_expenses::before {
