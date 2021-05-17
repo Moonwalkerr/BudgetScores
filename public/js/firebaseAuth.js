@@ -1,7 +1,7 @@
 const auth = firebase.auth();
 auth.onAuthStateChanged((firebaseUser) => {
   if (firebaseUser) {
-    window.location = "./index.html";
+    window.location = "../home/";
   }
 });
 const input_email = document.getElementById("email");
