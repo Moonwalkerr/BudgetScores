@@ -9,39 +9,36 @@
 </head>
 
 <body>
-
-    <div class="mainContainer">
-        <div class="trackerInput_container">
-            <div class="trackerInput_navbar">
-                <h2>Enter your expense here <span><button id="logout">Logout</button></span> </h2>
-            </div>
-            <div class="trackerInput_box">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNw22RpwrqNhMQyj4xMO8nHqd9E2nCqGZjLcocuR4kzeqTGZFODvp090wE2sm3NFT3F1k&usqp=CAU"
-                    alt="">
-                <input type="text" id="item_name" placeholder="Enter Item Name">
-                <input type="number" id="amount_spent" placeholder="Enter Amount spent">
-                <div class="expense_btns">
-                    <button id="add_btn">Add Expense</button>
-                    <button id="reset_btn">Reset</button>
-                </div>
-            </div>
+    <div class="trackerInput_container">
+        <div class="trackerInput_navbar">
+            <h2>Enter your expense here <span><button id="logout">Logout</button></span> </h2>
         </div>
-        <div class="trackerOutput_container">
-            <div class="trackerOutput_navbar">
-                <h2>Track Your Expenses here </h2>
-            </div>
-            <div class="trackerOutput_box">
-                <ul class="expense_list">
-                    <!-- <li>Exp 1 : <span>100</span> </li> -->
-                </ul>
-                <h2 className="no_expenses"></h2>
-
-            </div>
-            <div class="totalExpenses">
-                <h2>Total Expenses : <span id="total_expenses">0</span> </h2>
+        <div class="trackerInput_box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNw22RpwrqNhMQyj4xMO8nHqd9E2nCqGZjLcocuR4kzeqTGZFODvp090wE2sm3NFT3F1k&usqp=CAU"
+                alt="">
+            <input type="text" id="item_name" placeholder="Enter Item Name">
+            <input type="number" id="amount_spent" placeholder="Enter Amount spent">
+            <div class="expense_btns">
+                <button id="add_btn">Add Expense</button>
+                <button id="reset_btn">Reset</button>
             </div>
         </div>
     </div>
+    <div class="trackerOutput_container">
+        <div class="trackerOutput_navbar">
+            <h2>Track Your Expenses here </h2>
+        </div>
+        <div class="trackerOutput_box">
+            <ul class="expense_list">
+            </ul>
+            <h2 className="no_expenses"></h2>
+
+        </div>
+        <div class="totalExpenses">
+            <h2>Total Expenses : <span id="total_expenses">0</span> </h2>
+        </div>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
