@@ -20,48 +20,42 @@ auth.onAuthStateChanged((firebaseUser) => {
   }
   if (firebaseUser.uid) {
     user = firebaseUser.uid;
-    ul.innerHTML = "";
-    db.collection(user)
-      .doc("Expenses")
-      .collection("ExpenseArray")
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => generateList(doc));
-      });
-    db.collection(user)
-      .doc("TotalExpenses")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          console.log(doc.data());
-          totalExpenses = doc.data().totalExpenses;
-          total_expenses.innerHTML = totalExpenses;
-        }
-      });
+    generateLists();
+    generateTotalExpenses();
   }
 });
-// function that takes the snapshot's argument to generate list items of unordered list
-function generateList(snapshot_doc) {
-  // console.log(snapshot_doc.data());
-  const list_item = document.createTextNode(snapshot_doc.data().item);
-  const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
-  const span = document.createElement("span");
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("deleteBtn");
-  const delete_node = document.createTextNode("❌");
-  deleteBtn.appendChild(delete_node);
-  span.classList.add("list-amount");
-  span.appendChild(list_amount);
-  span.appendChild(deleteBtn);
 
-  const li = document.createElement("li");
-  li.classList.add("list-group-item");
-  li.appendChild(list_item);
-  li.appendChild(span);
-  ul.appendChild(li);
+// This method fetches all the expenses from the firebase, and updates accordingly on the DOM Unordered list
+function generateLists() {
+  ul.innerHTML = "";
+  db.collection(user)
+    .doc("Expenses")
+    .collection("ExpenseArray")
+    .orderBy("timestamp", "desc")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => generateListItem(doc));
+    });
+  generateTotalExpenses();
 }
 
+// This method fetches total expenses from firebase, and renders total expenses element in our DOM
+function generateTotalExpenses() {
+  db.collection(user)
+    .doc("TotalExpenses")
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        console.log(doc.data());
+        totalExpenses = doc.data().totalExpenses;
+
+        // rendering the respective element
+        total_expenses.innerHTML = totalExpenses;
+      }
+    });
+}
+
+// This function updates total expenses document value on firebase
 function updateTotalExpenses(expense) {
   // console.log(totalExpenses, expense);
   db.collection(user)
@@ -76,9 +70,33 @@ function updateTotalExpenses(expense) {
       if (doc.exists) {
         console.log(doc.data());
         totalExpenses = doc.data().totalExpenses;
+        // re rendering the respective element again
         total_expenses.innerHTML = totalExpenses;
       }
     });
+}
+
+// function that takes the snapshot's argument to generate list items of unordered list
+function generateListItem(snapshot_doc) {
+  // console.log(snapshot_doc.data());
+  const list_item = document.createTextNode(snapshot_doc.data().item);
+  const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
+  const span = document.createElement("span");
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("deleteBtn");
+  const delete_node = document.createTextNode("❌");
+  deleteBtn.appendChild(delete_node);
+  span.classList.add("list-amount");
+
+  // rendering the respective elements
+  span.appendChild(list_amount);
+  span.appendChild(deleteBtn);
+
+  const li = document.createElement("li");
+  li.classList.add("list-group-item");
+  li.appendChild(list_item);
+  li.appendChild(span);
+  ul.appendChild(li);
 }
 
 // Logout event listener
@@ -110,7 +128,7 @@ addButton.addEventListener("click", () => {
     .orderBy("timestamp", "desc")
     .get()
     .then((snapshot) => {
-      snapshot.forEach((doc) => generateList(doc));
+      snapshot.forEach((doc) => generateListItem(doc));
     });
 
   item_name_input.value = "";
