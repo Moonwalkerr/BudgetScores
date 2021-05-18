@@ -655,3 +655,201 @@ img {
         color: #004AAD;
     }
 }
+
+@media screen and (max-width:400px) {
+
+    .loginBody>form {
+        height:80vh;
+        width: 70vw;
+        /* padding:6px; */
+        /* padding: 14px; */
+    }
+
+    form>img {
+        margin: 0px auto;
+        height: 30vh;
+        width: 55vw;
+    }
+
+    form>input {
+        font-size: 12px;
+    }
+
+    form>button {
+        font-size: 10px;
+        width: 95%;
+    }
+
+    form>button:hover {
+        background-color: gray;
+    }
+
+    form>button>i {
+        margin-right: 10px;
+    }
+
+    .trackerInput_container {
+        flex: 0.50;
+        height: 100vh;
+        display: flex;
+        border-right: 1px solid #333;
+        flex-flow: column nowrap;
+        position: sticky;
+    }
+
+    .trackerOutput_container {
+        flex: 0.50;
+        display: flex;
+        height: 100vh;
+        flex-flow: column nowrap;
+        position: relative;
+    }
+
+    .trackerOutput_box {
+        display: flex;
+        padding: 30px;
+        flex-flow: column nowrap;
+        overflow: scroll;
+    }
+
+    .trackerInput_box {
+        margin: auto;
+        width: 80%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .trackerInput_navbar,
+    .trackerOutput_navbar {
+        background-color: #004AAD;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2rem;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        min-height: 10vh;
+        justify-content: space-evenly;
+        position: sticky;
+        box-shadow: 4px 1px 3px 4px rgba(0, 0, 0, 0.3);
+        color: white;
+        transition: box-shadow 0.3s;
+    }
+
+    h2 {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #userImg {
+        margin-left: 20px;
+        height: 7vh;
+        width: 5vw;
+        border-radius: 50%;
+        border: none;
+    }
+
+
+    .trackerInput_navbar:hover,
+    .trackerOutput_navbar:hover {
+        box-shadow: 4px 2px 3px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .deleteBtn {
+        width: 3vw;
+        font-size: 12px;
+        margin-left: 10px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .home-btns {
+        color: white;
+        background-color: #004AAD;
+        letter-spacing: 1px;
+    }
+
+    #logout {
+        cursor: pointer;
+        border: none;
+        font-size: 15px;
+    }
+
+    .trackerOutput_navbar>h2>span>button {
+        width: 8vw;
+        margin-left: 20px;
+        border-radius: 12px;
+    }
+
+
+
+    img {
+        height: 48vh;
+        width: 25vw;
+        margin-bottom: 0.5rem;
+        border-radius: 14px;
+        box-shadow: 3px 3px 5px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .trackerInput_box>input {
+        width: 25vw;
+        margin: 10px auto;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+
+    .expense_btns {
+        margin: 4px;
+        display: flex;
+        width: 25vw;
+        justify-content: space-evenly;
+    }
+
+    .expense_btns>button {
+        cursor: pointer;
+        width: 8vw;
+        font-size: 0.88rem;
+        font-weight: 600;
+        border-radius: 12px;
+        border: none;
+    }
+
+    .trackerOutput_box>h2 {
+        text-align: center;
+    }
+
+    .trackerOutput_box>ul {
+        margin: 0px 20px;
+    }
+
+    .trackerOutput_box>ul>li {
+        font-size: 26px;
+    }
+
+    .totalExpenses {
+        position: absolute;
+        padding: 20px;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        bottom: 0%;
+        text-align: center;
+        box-shadow: 2px -2px 5px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .list-amount::before,
+    #total_expenses::before {
+        content: "₹ ";
+    }
+
+    .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        color: #004AAD;
+    }
+}
