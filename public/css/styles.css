@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,8 +13,14 @@ body {
     justify-content: center;
     background-color: darkgray;
     box-sizing: border-box;
+    font-family: 'Poppins',
+        sans-serif;
 }
 
+
+button {
+    font-family: 'Roboto Mono', monospace;
+}
 
 body>form {
     display: flex;
@@ -30,18 +39,19 @@ button {
     padding: 12px;
     width: 30vw;
     border-radius: 12px;
-    border:none;
-    box-shadow:1px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    border: none;
+    box-shadow: 1px 2px 2px 3px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s;
 }
 
 input:hover,
 button:hover {
-    box-shadow:1px 3px 4px 3px rgba(0, 0, 0, 0.36);
+    box-shadow: 1px 3px 4px 3px rgba(0, 0, 0, 0.36);
 }
 
-button, input:focus{
-    outline:0;
+button,
+input:focus {
+    outline: 0;
 }
 
 form>button {
@@ -50,6 +60,7 @@ form>button {
     color: white;
     background-color: #333;
     cursor: pointer;
+    letter-spacing: 2px;
 }
 
 form>button:hover {
@@ -59,23 +70,6 @@ form>button:hover {
 form>button>i {
     margin-right: 10px;
 }
-
-/* .mainContainer{
-    display:flex;
-    flex-wrap: nowrap;
-    height:85vh;
-    width:80vw;
-    border:1px solid black;
-    overflow:scroll; 
-    background-color:lightgray;
-    box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.18);
-    transition: box-shadow 0.4s;
-} */
-/* 
-.mainContainer:hover{
-    box-shadow: 1px 2px 8px 8px rgba(0,0,0,0.26);
-} */
-
 
 .trackerInput_container {
     flex: 0.50;
@@ -122,12 +116,12 @@ form>button>i {
     justify-content: space-evenly;
     position: sticky;
     box-shadow: 4px 1px 3px 4px rgba(0, 0, 0, 0.3);
-    color:white;
+    color: white;
     transition: box-shadow 0.3s;
 }
 
 .trackerInput_navbar:hover,
-.trackerOutput_navbar:hover{
+.trackerOutput_navbar:hover {
     box-shadow: 4px 2px 3px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -140,14 +134,16 @@ form>button>i {
     cursor: pointer;
 }
 
-.home-btns{
-color:white;
-background-color:#004AAD;
+.home-btns {
+    color: white;
+    background-color: #004AAD;
+    letter-spacing: 1px;
 }
 
 #logout {
     cursor: pointer;
     border: none;
+    font-size:15px;
 }
 
 .trackerInput_navbar>h2>span>button {
@@ -221,10 +217,12 @@ img {
 .list-group-item {
     display: flex;
     justify-content: space-between;
+    color:#004AAD;
 }
 
 .list-amount {
-    font-family: cursive;
+    color:#333;
+    /* font-family: cursive; */
 }
 
 #total_expenses {
