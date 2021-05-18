@@ -12,38 +12,40 @@
 </head>
 
 <body>
-    <div class="trackerInput_container">
-        <div class="trackerInput_navbar">
-            <h2> Enter your expense here <span> <img src="" alt="" id="userImg"> </span></h2>
+    <div class="home">
+
+        <div class="trackerInput_container">
+            <div class="trackerInput_navbar">
+                <h2> Enter your expense here <span> <img src="" alt="" id="userImg"> </span></h2>
+            </div>
+            <div class="trackerInput_box">
+                <img src="../../public/assets/BudgetScoresLogo.png" alt="">
+                <input type="text" id="item_name" placeholder="Enter Item Name" />
+                <input type="number" id="amount_spent" placeholder="Enter Amount (₹) spent" />
+                <div class="expense_btns">
+                    <button id="add_btn" class="home-btns"> Add <i class="fas fa-rupee-sign"></i>
+                    </button>
+                    <button id="reset_btn" class="home-btns">Reset</button>
+                </div>
+            </div>
         </div>
-        <div class="trackerInput_box">
-            <img src="../../public/assets/BudgetScoresLogo.png" alt="">
-            <input type="text" id="item_name" placeholder="Enter Item Name" />
-            <input type="number" id="amount_spent" placeholder="Enter Amount (₹) spent" />
-            <div class="expense_btns">
-                <button id="add_btn" class="home-btns"> Add <i class="fas fa-rupee-sign"></i>
-                </button>
-                <button id="reset_btn" class="home-btns">Reset</button>
+        <div class="trackerOutput_container">
+            <div class="trackerOutput_navbar">
+                <h2>Track Your Expenses here <span><button id="logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button></span></h2>
+            </div>
+            <div class="trackerOutput_box">
+                <ul class="expense_list">
+                </ul>
+                <h2 className="no_expenses"></h2>
+
+            </div>
+            <div class="totalExpenses">
+                <h2>Total Expenses &nbsp; : &nbsp; <span id="total_expenses"> 0 </span> </h2>
             </div>
         </div>
     </div>
-    <div class="trackerOutput_container">
-        <div class="trackerOutput_navbar">
-            <h2>Track Your Expenses here <span><button id="logout">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Logout</button></span></h2>
-        </div>
-        <div class="trackerOutput_box">
-            <ul class="expense_list">
-            </ul>
-            <h2 className="no_expenses"></h2>
-
-        </div>
-        <div class="totalExpenses">
-            <h2>Total Expenses &nbsp; : &nbsp; <span id="total_expenses"> 0 </span> </h2>
-        </div>
-    </div>
-
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
