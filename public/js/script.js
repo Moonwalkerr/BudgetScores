@@ -2,7 +2,6 @@
 const auth = firebase.auth();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 let user = "";
-var totalExpenses = 0;
 
 // Declaring required variables by fetching them from dom using querySelector
 const item_name_input = document.querySelector("#item_name");
@@ -175,7 +174,6 @@ addButton.addEventListener("click", () => {
 // Reset Button
 resetBtn.addEventListener("click", () => {
   ul.innerHTML = "";
-  total_expenses.innerHTML = "0";
   item_name_input.value = "";
   amount_spent_input.value = "";
   db.collection(user)
@@ -186,7 +184,13 @@ resetBtn.addEventListener("click", () => {
       response.forEach((doc) => doc.ref.delete());
     });
 
-  db.collection(user).doc("TotalExpenses").set({
-    totalExpenses: 0,
-  });
+  db.collection(user)
+    .doc("TotalExpenses")
+    .set({
+      totalExpenses: 0,
+    })
+    .then(() => {
+      generateTotalExpenses();
+      alert("Cleared all the data from storage!");
+    });
 });
