@@ -32,6 +32,12 @@ button {
     border-radius: 12px;
     border:none;
     box-shadow:1px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+}
+
+input:hover,
+button:hover {
+    box-shadow:1px 3px 4px 3px rgba(0, 0, 0, 0.36);
 }
 
 button, input:focus{
@@ -115,8 +121,14 @@ form>button>i {
     min-height: 10vh;
     justify-content: space-evenly;
     position: sticky;
-    box-shadow: 4px 5px 5px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 4px 1px 3px 4px rgba(0, 0, 0, 0.3);
     color:white;
+    transition: box-shadow 0.3s;
+}
+
+.trackerInput_navbar:hover,
+.trackerOutput_navbar:hover{
+    box-shadow: 4px 2px 3px 4px rgba(0, 0, 0, 0.4);
 }
 
 .deleteBtn {
@@ -156,6 +168,7 @@ img {
     font-size: 18px;
     padding: 10px;
 }
+
 
 .expense_btns {
     margin: 4px;
