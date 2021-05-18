@@ -23,7 +23,7 @@ body>form {
     border-radius: 20px;
 }
 
-form>input,
+input,
 button {
     margin: 0.5rem auto;
     font-size: 18px;
@@ -34,7 +34,7 @@ button {
     box-shadow:1px 2px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-form > input:focus{
+input:focus{
     outline:0;
 }
 
@@ -115,7 +115,7 @@ form>button>i {
     min-height: 10vh;
     justify-content: space-evenly;
     position: sticky;
-    box-shadow: 2px 2px 5px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 5px 5px 4px rgba(0, 0, 0, 0.3);
     color:white;
 }
 
@@ -143,9 +143,11 @@ form>button>i {
 
 
 img {
-    height: 45vh;
-    width: 30vw;
+    height: 48vh;
+    width: 25vw;
     margin-bottom: 0.5rem;
+    border-radius: 14px;
+    box-shadow: 3px 3px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
 .trackerInput_box>input {
