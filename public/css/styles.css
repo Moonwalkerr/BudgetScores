@@ -6,12 +6,20 @@
     padding: 0;
 }
 
+:root{
+    --primary:#004AAD;
+    --background:darkgray;
+    --heading:#fafafa;
+    --dark-color:#333;
+    --inner-bg:#ebebeb;
+
+}
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: darkgray;
+    background-color: var(--background);
     box-sizing: border-box;
     font-family: 'Poppins',
         sans-serif;
@@ -21,7 +29,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: darkgray;
+    background-color: var(--background);
     box-sizing: border-box;
     width: 100%;
 }
@@ -39,10 +47,15 @@ button {
     border: 1px solid black;
     padding: 12px;
     width: 35vw;
-    background-color: antiquewhite;
+    background-color: lightgray;
     box-shadow: 2px 3px 5px 4px rgba(0, 0, 0, 0.2);
     flex-flow: column nowrap;
     border-radius: 20px;
+    border:none;
+    transition:box-shadow 0.3s;
+}
+.loginBody>form:hover{
+    box-shadow: 2px 3px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 form>img {
@@ -63,6 +76,10 @@ button {
     transition: box-shadow 0.3s;
 }
 
+
+input{
+    background-color:var(--inner-bg)
+}
 input:hover,
 button:hover {
     box-shadow: 1px 3px 4px 3px rgba(0, 0, 0, 0.36);
@@ -76,13 +93,14 @@ input:focus {
 form>button {
     font-size: 14px;
     width: 20vw;
-    color: white;
-    background-color: #333;
+    color: var(--heading);
     cursor: pointer;
+    transition:background-color 0.3s;
+    background-color: var(--dark-color);
 }
 
 form>button:hover {
-    background-color: gray;
+    background-color: var(--primary);
 }
 
 form>button>i {
@@ -93,7 +111,7 @@ form>button>i {
     flex: 0.50;
     height: 100vh;
     display: flex;
-    border-right: 1px solid #333;
+    border-right: 1px solid var(--dark-color);
     flex-flow: column nowrap;
     position: sticky;
 }
@@ -124,7 +142,7 @@ form>button>i {
 
 .trackerInput_navbar,
 .trackerOutput_navbar {
-    background-color: #004AAD;
+    background-color: var(--primary);
     padding: 10px;
     text-align: center;
     font-size: 1.2rem;
@@ -135,7 +153,7 @@ form>button>i {
     justify-content: space-evenly;
     position: sticky;
     box-shadow: 4px 1px 3px 4px rgba(0, 0, 0, 0.3);
-    color: white;
+    color: var(--heading);
     transition: box-shadow 0.3s;
 }
 
@@ -168,11 +186,15 @@ h2 {
     border: none;
     cursor: pointer;
 }
-
+.deleteBtn:hover {
+    background-color: var(--dark-color);
+}
 .home-btns {
-    color: white;
-    background-color: #004AAD;
+    color: var(--heading);
+    background-color: var(--primary);
     letter-spacing: 1px;
+    transition:background-color 0.3s;
+
 }
 
 #logout {
@@ -221,6 +243,9 @@ img {
     border-radius: 12px;
     border: none;
 }
+.expense_btns>button:hover{
+    background-color: var(--dark-color);
+}
 
 .trackerOutput_box>h2 {
     text-align: center;
@@ -238,24 +263,20 @@ img {
     position: absolute;
     padding: 20px;
     width: 100%;
-    background-color: #333;
-    color: white;
+    background-color: var(--dark-color);
+    color: var(--heading);
     bottom: 0%;
     text-align: center;
     box-shadow: 2px -2px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
-.list-amount::before,
-#total_expenses::before {
-    content: "₹ ";
-}
 
 .list-group-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #004AAD;
-    background-color: white;
+    color: var(--primary);
+    background-color: var(--inner-bg);
     margin-bottom: 20px;
     border-radius: 14px;
     box-shadow: 3px 3px 5px 4px rgba(0, 0, 0, 0.2);
@@ -268,7 +289,7 @@ img {
 }
 
 .list-amount {
-    color: #333;
+    color: var(--dark-color);
     /* font-family: cursive; */
 }
 
@@ -290,7 +311,7 @@ img {
         border: 1px solid black;
         padding: 12px;
         width: 50vw;
-        background-color: antiquewhite;
+        background-color: antiquevar(--heading);
         box-shadow: 2px 3px 5px 4px rgba(0, 0, 0, 0.2);
         flex-flow: column nowrap;
         border-radius: 20px;
@@ -338,7 +359,7 @@ img {
 
     .trackerInput_navbar,
     .trackerOutput_navbar {
-        background-color: #004AAD;
+        background-color: var(--primary);
         padding: 10px;
         text-align: center;
         display: flex;
@@ -348,7 +369,7 @@ img {
         justify-content: space-evenly;
         position: sticky;
         box-shadow: 4px 1px 3px 4px rgba(0, 0, 0, 0.3);
-        color: white;
+        color: var(--heading);
         transition: box-shadow 0.3s;
     }
 
@@ -362,7 +383,7 @@ img {
     }
 
     .home-btns {
-        background-color: #004AAD;
+        background-color: var(--primary);
         letter-spacing: 0px;
     }
 
@@ -402,8 +423,8 @@ img {
     .totalExpenses {
         padding: 12px;
         /* width: 100%;
-        background-color: #333;
-        color: white;
+        background-color: var(--dark-color);
+        color: var(--heading);
         bottom: 0%;
         text-align: center;
         box-shadow: 2px -2px 5px 4px rgba(0, 0, 0, 0.2); */
@@ -413,7 +434,7 @@ img {
     .list-group-item {
         display: flex;
         justify-content: space-between;
-        color: #004AAD;
+        color: var(--primary);
     } */
 }
 
@@ -578,9 +599,6 @@ img {
         width: 95%;
     }
 
-    form>button:hover {
-        background-color: gray;
-    }
 
     form>button>i {
         margin-right: 10px;
