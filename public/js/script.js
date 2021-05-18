@@ -105,15 +105,18 @@ function generateListItem(snapshot_doc) {
   // console.log();
   const list_item = document.createTextNode(snapshot_doc.data().item);
   const list_amount = document.createTextNode(snapshot_doc.data().amountSpent);
-  const span = document.createElement("span");
+  const span = document.createElement("i");
   const deleteBtn = document.createElement("button");
+  deleteBtn.classList.add("fas");
+  deleteBtn.classList.add("fa-trash-alt");
   deleteBtn.classList.add("deleteBtn");
+  deleteBtn.classList.add("home-btns");
   deleteBtn.addEventListener("click", () =>
     deleteDoc(snapshot_doc.id, snapshot_doc.data().amountSpent)
   );
 
-  const delete_node = document.createTextNode("❌");
-  deleteBtn.appendChild(delete_node);
+  // const delete_node = document.createTextNode("❌");
+  // deleteBtn.appendChild(delete_node);
   span.classList.add("list-amount");
 
   // rendering the respective elements
