@@ -12,6 +12,9 @@ const total_expenses = document.querySelector("#total_expenses");
 const resetBtn = document.querySelector("#reset_btn");
 const ul = document.querySelector(".expense_list");
 const logout = document.querySelector("#logout");
+const userImg = document.querySelector("#userImg");
+userImg.src =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs92HmskgWVUEaYVT0VOfWLH_we0UqMbIbAQ&usqp=CAU";
 
 auth.onAuthStateChanged((firebaseUser) => {
   // console.log(firebaseUser);
@@ -22,6 +25,9 @@ auth.onAuthStateChanged((firebaseUser) => {
     user = firebaseUser.uid;
     generateLists();
     generateTotalExpenses();
+  }
+  if (firebaseUser.photoURL) {
+    userImg.src = firebaseUser.photoURL;
   }
 });
 

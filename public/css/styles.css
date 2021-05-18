@@ -125,6 +125,21 @@ form>button>i {
     transition: box-shadow 0.3s;
 }
 
+h2{
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+}
+#userImg{
+    margin-left:20px;
+    height:7vh;
+    width:5vw;
+    border-radius:50%;
+    border:none;
+}
+
+
 .trackerInput_navbar:hover,
 .trackerOutput_navbar:hover {
     box-shadow: 4px 2px 3px 4px rgba(0, 0, 0, 0.4);
@@ -151,7 +166,7 @@ form>button>i {
     font-size:15px;
 }
 
-.trackerInput_navbar>h2>span>button {
+.trackerOutput_navbar>h2>span>button {
     width: 8vw;
     margin-left: 20px;
     border-radius: 12px;
