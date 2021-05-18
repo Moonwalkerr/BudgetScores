@@ -5,10 +5,14 @@
 - HTML5.
 - CSS3.
 - Vanilla Javascript.
-- Firebasse (Auth & Firestore)
-- No frameworks used
+- Firebase (Auth & Firestore).
+- No frameworks used.
 
 ## Features :
+- User authentication using Email & passwd and and with Google.
 - Add your expenditure according to item name and amount spent.
 - Check all the items spent before  and sum of amount spent on them.
-- Check total expenses.
+- Total Expenses Tracker display.
+- Remove any item as per desire.
+- Delete entire Storage (Reset) & start over.
+- Fully responsive for mobile and desktop view.
