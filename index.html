@@ -11,18 +11,21 @@
 </head>
 
 <body>
-    <form>
-        <img src="./public/assets/budgetscores.jpg" alt="">
-        <input type="email" placeholder="Enter your email address" id="email">
-        <input type="password" placeholder="Enter your password" id="paswd">
-        <button id="login"> <i class="fas fa-sign-in-alt"></i>Log In as existing user </button>
-        <button id="google_auth">
-            <i class="fab fa-google"></i>
-            Continue With Google</button>
-        <button id="signIn">
-            <i class="fas fa-user-plus"></i>
-            Sign In as New user</button>
-    </form>
+    <div class="loginBody">
+
+        <form>
+            <img src="./public/assets/budgetscores.jpg" alt="">
+            <input type="email" placeholder="Enter your email address" id="email">
+            <input type="password" placeholder="Enter your password" id="paswd">
+            <button id="login"> <i class="fas fa-sign-in-alt"></i>Log In as existing user </button>
+            <button id="google_auth">
+                <i class="fab fa-google"></i>
+                Continue With Google</button>
+            <button id="signIn">
+                <i class="fas fa-user-plus"></i>
+                Sign In as New user</button>
+        </form>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
