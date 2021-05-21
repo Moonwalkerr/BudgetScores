@@ -39,7 +39,7 @@ button {
 }
 
 .loginBody {
-    padding: 20px;
+    padding: 6px;
 }
 
 .loginBody>form {
@@ -580,7 +580,7 @@ img {
 @media screen and (max-width:430px) {
 
     .loginBody>form {
-        height: 80vh;
+        height: 90vh;
         width: 70vw;
     }
 
