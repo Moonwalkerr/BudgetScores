@@ -53,7 +53,7 @@ async function signInWithGoogle(event) {
 async function signInAsGuest(event) {
   event.preventDefault();
   let guest_email = "testUser@test.com";
-  let guest_paswd = 123456;
+  let guest_paswd = "123456";
   input_email.value = guest_email;
   input_paswd.value = guest_paswd;
   try {
