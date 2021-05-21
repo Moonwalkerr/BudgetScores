@@ -13,7 +13,7 @@ const ul = document.querySelector(".expense_list");
 const logout = document.querySelector("#logout");
 const userImg = document.querySelector("#userImg");
 userImg.src =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs92HmskgWVUEaYVT0VOfWLH_we0UqMbIbAQ&usqp=CAU";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvPasPbrVe2Txcc4aGbZkCddJkVTaj8uyb7A&usqp=CAU";
 
 auth.onAuthStateChanged((firebaseUser) => {
   // console.log(firebaseUser);
@@ -146,33 +146,29 @@ const db = firebase.firestore();
 
 // Adding Expense Button
 addButton.addEventListener("click", () => {
-  if (item_name_input.value === "" || amount_spent_input.value == "") {
-    alert("Please enter valid input fields!");
-  } else {
-    let amountSpent = parseInt(amount_spent_input.value, 10);
+  let amountSpent = parseInt(amount_spent_input.value, 10);
 
-    total_expenses.innerHTML = "";
-    updateTotalExpenses(amountSpent);
+  total_expenses.innerHTML = "";
+  updateTotalExpenses(amountSpent);
 
-    db.collection(user).doc("Expenses").collection("ExpenseArray").add({
-      item: item_name_input.value,
-      amountSpent: amountSpent,
-      timestamp: timestamp,
+  db.collection(user).doc("Expenses").collection("ExpenseArray").add({
+    item: item_name_input.value,
+    amountSpent: amountSpent,
+    timestamp: timestamp,
+  });
+
+  ul.innerHTML = "";
+  db.collection(user)
+    .doc("Expenses")
+    .collection("ExpenseArray")
+    .orderBy("timestamp", "desc")
+    .get()
+    .then((snapshot) => {
+      snapshot.forEach((doc) => generateListItem(doc));
     });
 
-    ul.innerHTML = "";
-    db.collection(user)
-      .doc("Expenses")
-      .collection("ExpenseArray")
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => generateListItem(doc));
-      });
-
-    item_name_input.value = "";
-    amount_spent_input.value = "";
-  }
+  item_name_input.value = "";
+  amount_spent_input.value = "";
 });
 
 // Reset Button
